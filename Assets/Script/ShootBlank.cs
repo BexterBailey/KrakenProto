@@ -25,7 +25,20 @@ public class ShootBlank : MonoBehaviour
             spawnedProjectile.GetComponent<Rigidbody>().AddForce(muzzlePoint.up * projectileSpeed);
             //destroy the projectile after time has passed
             Destroy(spawnedProjectile, projectileLifespan);
+            StartCoroutine(Shake());
         }
+    }
 
+    public IEnumerator Shake(){
+        float time = 0.0f;
+        while (time < 0.7f)
+        {
+            
+            float x = Random.Range(-15f, 15f) * 0.3f;
+            float z = Random.Range(-15f, 15f) * 0.3f;
+            transform.position = transform.position + new Vector3(x, 0, z);
+            time += Time.deltaTime;
+            yield return null;
+        }
     }
 }

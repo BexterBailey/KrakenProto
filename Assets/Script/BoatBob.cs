@@ -17,7 +17,7 @@ public class BoatBob : MonoBehaviour
     }
 
     public void OnCollisionEnter(Collision collision){
-        StartCoroutine(Shake());
+        //StartCoroutine(Shake());
     }
 
     public IEnumerator Shake(){

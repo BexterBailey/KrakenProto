@@ -13,7 +13,7 @@ public class BoatBob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + new Vector3(0, 0.1f * Mathf.Sin(Time.time), 0);
+        transform.position = transform.position + new Vector3(0, 0.01f * Mathf.Sin(Time.time), 0);
     }
 
     public void OnCollisionEnter(Collision collision){

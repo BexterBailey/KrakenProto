@@ -11,6 +11,13 @@ public class ShootBlank : MonoBehaviour
     public float projectileLifespan = 10f;
     public float projectileSpeed = 3000f;
 
+    public AudioClip cannonFire;
+    private AudioSource cannonSource;
+
+    void Start(){
+        cannonSource = gameObject.AddComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +32,7 @@ public class ShootBlank : MonoBehaviour
             spawnedProjectile.GetComponent<Rigidbody>().AddForce(muzzlePoint.up * projectileSpeed);
             //destroy the projectile after time has passed
             Destroy(spawnedProjectile, projectileLifespan);
+            cannonSource.PlayOneShot(cannonFire);
             StartCoroutine(Shake());
         }
     }

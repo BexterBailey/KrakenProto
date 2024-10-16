@@ -12645,8 +12645,8 @@ MonoBehaviour:
   _Velocity: 0
   _MaxVelocity: 100
   _Acc: 0
-  _AccSpeed: 0.5
-  _MaxAcc: 15
+  _AccSpeed: 0.3
+  _MaxAcc: 20
   _MinAcc: -10
 --- !u!65 &1975684919
 BoxCollider:

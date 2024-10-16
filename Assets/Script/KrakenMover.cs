@@ -4,62 +4,35 @@ using UnityEngine;
 
 public class KrakenMover : MonoBehaviour
 {
-    public PlayerMoveInertia player;
-    public Animator animator;
-    public Rigidbody rigidBody;
-    Vector3 targetPosition;
-    float x, y;
-    public float moveSpeed = 15;
-    private Vector3 moveDirection;
-    // Start is called before the first frame update
+    public Transform player;    // Assign the player's transform in the Inspector
+    public float speed = 20f;    // Speed of movement
+    public float stoppingDistance = 1f; // Minimum distance to stop moving
+    private Animator animator;  // Animator reference
+
     void Start()
     {
-        targetPosition = player.transform.position;
-        
-        y = Camera.main.orthographicSize;
-        x = Camera.main.aspect*y;
+        // Get the Animator component attached to the object
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 10){
-            animator.SetTrigger("Attack_1");
-        }
-        targetPosition = getCoords(targetPosition);
-        moveDirection = getDirection(transform.position, targetPosition).normalized;
-        move();
-    }
+        // Calculate the direction from the object to the player
+        Vector3 direction = (player.position - transform.position).normalized;
+        float distance = Vector3.Distance(player.position, transform.position);
 
-    public void move(){
-        rigidBody.velocity = moveDirection * moveSpeed;
-    }
+        // Check if the object is close enough to stop
+        if (distance > stoppingDistance)
+        {
+            // Move the object towards the player
+            transform.position += direction * speed * Time.deltaTime;
 
-    public Vector3 getDirection(Vector3 from,Vector3 to){
-        Vector3 coords = getCoords(to);
-        Vector3 result = Vector3.zero;
-        float magnitude = (x+y)*2;
-        for(int _x = -1; _x<2; _x++){
-            for(int _y = -1; _y<2; _y++){
-                if(Vector3.Distance(from,coords + new Vector3(_x*x*2, 0,_y*y*2)) < magnitude){
-                    magnitude = Vector3.Distance(from,coords+ new Vector3(_x*x*2, _y*y*2,0));
-                    result = coords + new Vector3(_x*x*2, 0,_y*y*2);
-                }
-            }
+            animator.SetBool("Walk_Cycle_1", true);
         }
-        //Debug.DrawLine(from,result);
-        return from-result;
-    }
-
-    public Vector3 getCoords(Vector3 vect){
-        float _x = vect.x;
-        float _y = vect.y;
-        while(_x>x || _x<-x){
-            _x = (_x>x)?_x-x*2:_x+x*2;
+        else
+        {
+            // Stop the movement when close enough to the player
+            animator.SetBool("Walk_Cycle_1", false);
         }
-        while(_y>y || _y<-y){
-            _y = (_y>y)?_y-y*2:_y+y*2;
-        }
-        return new Vector3(_x, 0, _y);
     }
 }

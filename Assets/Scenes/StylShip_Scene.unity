@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4469772, g: 0.4968657, b: 0.5750481, a: 1}
+  m_IndirectSpecularColor: {r: 0.44697678, g: 0.4968651, b: 0.5750469, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9930,13 +9930,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.3599488
-  m_Center: {x: -0.0000009157574, y: 1.3755981, z: 0.3802333}
---- !u!95 &1399094349 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5850578553012415794, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
-  m_PrefabInstance: {fileID: 1032983557}
-  m_PrefabAsset: {fileID: 0}
+  m_Radius: 1.2377983
+  m_Center: {x: -0.0714019, y: 1.5691497, z: 0.38023335}
 --- !u!114 &1399094350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9944,15 +9939,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399094342}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d731a610937afd47bc6aa1fa9d0c214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1975684918}
-  animator: {fileID: 1399094349}
-  rigidBody: {fileID: 1399094346}
-  moveSpeed: 15
+  player: {fileID: 1975684912}
+  speed: 60
+  stoppingDistance: 0.001
 --- !u!1001 &1429715359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14472,6 +14466,10 @@ PrefabInstance:
     - target: {fileID: 8515472688152868816, guid: a1dcd447bfbb3bc45821f8b436c031d2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8515472688152868816, guid: a1dcd447bfbb3bc45821f8b436c031d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8650887875610879589, guid: a1dcd447bfbb3bc45821f8b436c031d2, type: 3}
       propertyPath: m_IsActive

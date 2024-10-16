@@ -8,8 +8,8 @@ public class ShootBlank : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform muzzlePoint;
     public GameObject projectileParent;
-    public float projectileLifespan = 3f;
-    public float projectileSpeed = 20f;
+    public float projectileLifespan = 10f;
+    public float projectileSpeed = 3000f;
 
     // Update is called once per frame
     void Update()
